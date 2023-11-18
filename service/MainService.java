@@ -72,7 +72,8 @@ public class MainService {
 						inWordWithCorrectPlacementLetters.set(i, userGuess.toUpperCase().charAt(i));	
 					}
 				}
-
+				
+				//Makes a list with correct letters incorrectly placed
 				for(int i = 0; i < secretWord.length(); i++) {
 					for(int j = 0; j < secretWord.length(); j++) {
 						if(userGuess.charAt(i) == secretWord.charAt(j) && !orangeLetters.contains(userGuess.charAt(i))) {
@@ -104,7 +105,7 @@ public class MainService {
 			level = myScanner.nextInt();
 		}while(!listOfLevels.contains(level));
 		
-		if(level == 2) {
+		if(level == 2) { // Could be done with a for loop for more levels...
 			inWordWithCorrectPlacementLetters.add('?');
 		}else if(level == 3) {
 			inWordWithCorrectPlacementLetters.add('?');
