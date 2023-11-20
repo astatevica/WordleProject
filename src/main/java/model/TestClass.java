@@ -34,6 +34,16 @@ public class TestClass {
 
         System.out.println(game1);
 
+        System.out.println("---TEST_LETTER_CLASS------------------------------------------");
+        //Uztaisa visas bildes "PicturesOfLetter"
+        Letter letter = new Letter();
+        System.out.println(letter);
+
+        System.out.println("---TEST_WORD_CLASS------------------------------------------");
+        Word word1 = new Word("ORANGE");
+        System.out.println(word1);
+
+
 
     }
 }
