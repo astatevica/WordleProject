@@ -27,31 +27,38 @@ public class MainService {
 		String secretWord = "";
 		
 		if (level == 1) {
-			secretWord = getSecretNum(fiveLetterWords, level); 
+			secretWord = getSecretWord(fiveLetterWords, level); 
 		}
 		if (level == 2) {
-			secretWord = getSecretNum(sixLetterWords, level); 
+			secretWord = getSecretWord(sixLetterWords, level); 
 		}
 		if (level == 3) {
-			secretWord = getSecretNum(sevenLetterWords, level); 
+			secretWord = getSecretWord(sevenLetterWords, level); 
 		}
 		
 		//TODO Make levels {DONE}
 		
 		boolean gameOver = false;
 		
-		int lives = 7;
+		int lives = 6;
 	
 		ArrayList<String> allGuesses = new ArrayList<String>();
 		ArrayList<Character> grayLetters = new ArrayList<Character>();
 		ArrayList<Character> orangeLetters = new ArrayList<Character>();
+
 		
 		while(!gameOver) {
 			String userGuess = userGuessWord(level);	
 			userGuess = userGuess.toUpperCase();
-			allGuesses.add(userGuess.toUpperCase());
+			allGuesses.add(userGuess);
 			lives -= 1;
 			
+			ArrayList<String> lettersWithColors = new ArrayList<String>();
+			for(int i = 0; i < secretWord.length(); i++) {
+				lettersWithColors.add("?");
+			}
+
+
 			if(userGuess.equals(secretWord)) {
 				gameOver = true;
 				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, grayLetters);
@@ -66,26 +73,50 @@ public class MainService {
 				System.out.println("Word was: " + secretWord);
 			}else{
 				
-				//Makes a list with correctly placed used letters
-				for(int i = 0; i < secretWord.length(); i++) {
-					if(userGuess.charAt(i) == secretWord.charAt(i)) {
-						inWordWithCorrectPlacementLetters.set(i, userGuess.toUpperCase().charAt(i));	
-					}
-				}
 				
-				//Makes a list with correct letters incorrectly placed
 				for(int i = 0; i < secretWord.length(); i++) {
-					for(int j = 0; j < secretWord.length(); j++) {
-						if(userGuess.charAt(i) == secretWord.charAt(j) && !orangeLetters.contains(userGuess.charAt(i))) {
-							orangeLetters.add(userGuess.charAt(i));
+					
+					if(userGuess.charAt(i) == secretWord.charAt(i)) {
+						//Makes a list with correctly placed used letters
+						inWordWithCorrectPlacementLetters.set(i, userGuess.charAt(i));	
+
+
+						//Letter + Green (In secret word, with correct placement)
+						lettersWithColors.set(i, userGuess.charAt(i) + "Green");
+
+					}else{
+						for(int j = 0; j < secretWord.length(); j++) {
+							//Makes a list with correct letters incorrectly placed
+							if(userGuess.charAt(i) == secretWord.charAt(j)) {
+								//Letter + Orange (In secret word, without correct placement)
+								lettersWithColors.set(i, userGuess.charAt(i) + "Orange");
+								
+					
+								//Makes a list with letters in secret word, but incorrectly placed
+								if(!orangeLetters.contains(userGuess.charAt(i))){
+									orangeLetters.add(userGuess.charAt(i));
+								}
+							}
+						}
+
+						//Makes a list with letters not in the secret word
+						if(!orangeLetters.contains(userGuess.charAt(i)) && !grayLetters.contains(userGuess.charAt(i))) {
+							grayLetters.add(userGuess.charAt(i));
+						}
+
+
+						//Letter + Gray (Not in secret word)
+						if(grayLetters.contains(userGuess.charAt(i))){
+							lettersWithColors.set(i, userGuess.charAt(i) + "Gray");
 						}
 					}
-					if(!orangeLetters.contains(userGuess.charAt(i)) && !grayLetters.contains(userGuess.charAt(i))) {
-						grayLetters.add(userGuess.charAt(i));
-					}
 				}
 				
+	
 				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, grayLetters);
+				System.out.println(";;;;;;;;;;;;;;;;;;;;;;");
+				System.out.println("Letters with colors:" + lettersWithColors);
+				System.out.println(";;;;;;;;;;;;;;;;;;;;;;");
 					
 			}
 			
@@ -115,7 +146,7 @@ public class MainService {
 	}
 	
 	
-	public static String getSecretNum(ArrayList<String> listOfWords, int level) {
+	public static String getSecretWord(ArrayList<String> listOfWords, int level) {
 		Random rand = new Random();
 		String secretWord = listOfWords.get(rand.nextInt(listOfWords.size()));
 		return secretWord;
