@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class TestClass {
     public static void main(String[] args) {
@@ -16,32 +17,44 @@ public class TestClass {
 
 
 
-        System.out.println("--TEST-GAME_CLASS-------------------------------");
-        Game game1 = new Game(player1,4,true, LocalDateTime.of(2023,11,20,12,18));
+        System.out.println("--TEST-GAME_CLASS-------------------------------");;
+
+        System.out.println("--TEST-GAME_CLASS-addToAllGuesses-------------------------------");
+        ArrayList<String> testGuesses = new ArrayList<>();
+        testGuesses.add("BOOK");
+        testGuesses.add("SOUP");
+        testGuesses.add("CAMP");
+        testGuesses.add("CAKE");
+
+        Game game1 = new Game(player1,4,testGuesses,true, LocalDateTime.of(2023,11,20,12,18));
         System.out.println(game1);
 
         Game game2 = new Game();
         System.out.println(game2);
 
-        Game game3 = new Game(player3,6,false, LocalDateTime.of(2023,11,20,12,23));
+        Game game3 = new Game(player3,6,testGuesses,false, LocalDateTime.of(2023,11,20,12,23));
         System.out.println(game3);
 
-        System.out.println("--TEST-GAME_CLASS-addToAllGuesses-------------------------------");
-        game1.addToAllGuesses("BOOK");
-        game1.addToAllGuesses("SOUP");
-        game1.addToAllGuesses("CAMP");
-        game1.addToAllGuesses("CAKE");
-
-        System.out.println(game1);
-
         System.out.println("---TEST_LETTER_CLASS------------------------------------------");
-        //Uztaisa visas bildes "PicturesOfLetter"
-        Letter letter = new Letter();
-        System.out.println(letter);
+        PictureOfLetters letter1 = new PictureOfLetters("A","green");
+        System.out.println(letter1);
 
-        System.out.println("---TEST_WORD_CLASS------------------------------------------");
-        Word word1 = new Word("ORANGE");
-        System.out.println(word1);
+        PictureOfLetters letter2 = new PictureOfLetters("B", "orange");
+        System.out.println(letter2);
+
+        PictureOfLetters letter3 = new PictureOfLetters("N", "yellow");
+        System.out.println(letter3);
+
+        PictureOfLetters letter4 = new PictureOfLetters("S", "GrEy");
+        System.out.println(letter4);
+
+        PictureOfLetters letter5 = new PictureOfLetters("ņ", "GREEN");
+        System.out.println(letter5);
+
+
+
+
+
 
 
 

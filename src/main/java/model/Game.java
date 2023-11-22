@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     //Mainigie
@@ -9,9 +10,10 @@ public class Game {
     private int guessesCount;
     private boolean winOrNot;
     private LocalDateTime date;
+    private ArrayList<String> allGuesses;
 
-    //Šo priekš visu minējumu izvadīšanas priekš MainService
-    private ArrayList<String> allGuesses = new ArrayList<String>();
+    //test Array list for default constructor
+    public ArrayList<String> testArrayList = new ArrayList<>();
 
     //Getters
     public Player getPlayer() {
@@ -22,16 +24,16 @@ public class Game {
         return guessesCount;
     }
 
-    public ArrayList<String> getAllGuesses() {
-        return allGuesses;
-    }
-
     public boolean isWinOrNot() {
         return winOrNot;
     }
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public ArrayList<String> getAllGuesses() {
+        return allGuesses;
     }
 
     //Setteri
@@ -43,7 +45,6 @@ public class Game {
         }
     }
 
-    //TODO šo updato pēc katras spēles, jāsaprot funkcionalitāte
     public void setGuessesCount(int inputGuessesCount){
         if(inputGuessesCount >= 1){
             guessesCount = inputGuessesCount;
@@ -52,14 +53,13 @@ public class Game {
         }
     }
 
-//    ŠO NEVAJAG
-//    public void setAllGuesses(String inputAllGuesses){
-//        if(inputAllGuesses != null){
-//            allGuesses.add(inputAllGuesses);
-//        }else{
-//            allGuesses.add("NULL");
-//        }
-//    }
+    public void setAllGuesses(ArrayList<String> inputAllGuesses){
+        if(inputAllGuesses != null){
+            allGuesses = inputAllGuesses;
+        }else{
+            allGuesses.add("NULL");
+        }
+    }
 
     public void setWinOrNot(boolean inputWinOrNot){
         winOrNot = inputWinOrNot;
@@ -77,13 +77,15 @@ public class Game {
     public Game(){
         setPlayer(new Player());
         setGuessesCount(0);
+        setAllGuesses(testArrayList);
         setWinOrNot(true);
         setLocalDateTime(LocalDateTime.of(2023,11,20,11,43));
     }
 
-    public Game(Player inputPlayer, int inputGuessesCount,boolean inputWinOrNot, LocalDateTime inputDate){
+    public Game(Player inputPlayer, int inputGuessesCount,ArrayList<String> inputAllGuesses,boolean inputWinOrNot, LocalDateTime inputDate){
         setPlayer(inputPlayer);
         setGuessesCount(inputGuessesCount);
+        setAllGuesses(inputAllGuesses);
         setWinOrNot(inputWinOrNot);
         setLocalDateTime(inputDate);
     }
@@ -95,17 +97,5 @@ public class Game {
         return result;
     }
 
-    //Papildus funkcijas
-    //TODO katru reizi, kad tiks minēts vārds, tad funkcija tiks paņemta un izsaukta no šeienes līdzīgi
-    // kā addBus Driver or something similar
-    public void addToAllGuesses(String inputAllGuesses){
-        if(inputAllGuesses != null){
-            allGuesses.add(inputAllGuesses);
-            //System.out.println(inputAllGuesses);
-        }else{
-            allGuesses.add("NULL");
-            //System.out.println("NULL");
-        }
-    }
 
 }
