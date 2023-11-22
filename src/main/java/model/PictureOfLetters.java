@@ -8,7 +8,7 @@ public class PictureOfLetters {
     private String color;
     private Letters letterEnum;
     private Color colorEnum;
-    private String pictureOfLetter;
+    private String nameOfLetterPicture;
 
     //getters
     public String getLetter() {
@@ -27,8 +27,8 @@ public class PictureOfLetters {
         return colorEnum;
     }
 
-    public String getPictureOfLetter() {
-        return pictureOfLetter;
+    public String getNameOfLetterPicture() {
+        return nameOfLetterPicture;
     }
 
     //setters
@@ -78,8 +78,8 @@ public class PictureOfLetters {
     }
 
 
-    public void setPictureOfLetter(){
-        pictureOfLetter = letterEnum + "_" + colorEnum;
+    public void setNameOfLetterPicture(){
+        nameOfLetterPicture = letterEnum + "_" + colorEnum;
     }
 
     //constructors
@@ -88,7 +88,7 @@ public class PictureOfLetters {
         setColor("green");
         setLetterEnum();
         setColorEnum();
-        setPictureOfLetter();
+        setNameOfLetterPicture();
     }
 
     public PictureOfLetters(String inputLetter,String inputColor){
@@ -96,12 +96,12 @@ public class PictureOfLetters {
         setColor(inputColor);
         setLetterEnum();
         setColorEnum();
-        setPictureOfLetter();
+        setNameOfLetterPicture();
     }
 
     //toString function
     public String toString(){
-        String result = pictureOfLetter.toString();
+        String result = nameOfLetterPicture.toString();
         return result;
     }
 
