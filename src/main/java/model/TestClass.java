@@ -52,6 +52,13 @@ public class TestClass {
         System.out.println(letter5);
 
 
+        System.out.println("---TEST-GAME-WORDLE-CLASS------------------------------------------");
+        GameWordle gameWordle1 = new GameWordle(player1,4,testGuesses,true, LocalDateTime.of(2023,11,20,12,18),3,"SHOWS");
+        System.out.println(gameWordle1);
+
+        GameWordle gameWordle2 = new GameWordle();
+        System.out.println(gameWordle2);
+
 
 
 
