@@ -2,9 +2,46 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TestClass {
     public static void main(String[] args) {
+//        System.out.println("---------------------------------------------------");
+//        System.out.println("-----LOG-IN-&&-SIGN-UP-----------------------------");
+//        Scanner myScanner = new Scanner(System.in);
+//        System.out.println("Log-In or Sign-Up");
+//        String choice = myScanner.next();
+//        //TODO visu šo smuki ielikt loopā
+//        if(choice.matches("Log-In")){
+//            //TODO šo vajadzētu sameklēt no DB un neprasīt lietotājam, kas ielogojas
+//            System.out.println("Please input your username address: ");
+//            String username = myScanner.next();
+//            System.out.println("Please input your password address: ");
+//            String password = myScanner.next();
+//            //Te vajag funkciju, kas sameklēs personu
+//            //TODO te pēc būtības nevajadzēs izveidot playery, bet atrast esošo un agaidām izprintēt
+//        }else if (choice == "Sign-Up") {
+//            System.out.println("Please input your e-mail address: ");
+//            String email = myScanner.next();
+//            System.out.println("Please input your username address: ");
+//            String username = myScanner.next();
+//            System.out.println("Please input your password address: ");
+//            String password = myScanner.next();
+//            System.out.println("Please confirm your password address: ");
+//            String password1 = myScanner.next();
+//            if(password == password1){
+//                Player player = new Player(username, email, password);
+//                System.out.println(player); //Te vajadzētu ievietot info DB
+//            }else{
+//                System.out.println("------your-password-do-not-match-----------");
+//            }
+//        }else{
+//            System.out.println("------PLEASE-TRY-AGAIN--------------------------");
+//        }
+
+
+
+        System.out.println("---------------------------------------------------");
         System.out.println("--TEST-PLAYER_CLASS-------------------------------");
         Player player1 = new Player("bigBen425","bigBen425@gmail.com","bigBen425");
         System.out.println(player1);
