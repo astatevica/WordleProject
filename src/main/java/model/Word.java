@@ -43,7 +43,7 @@ public class Word {
         
 
         //TODO Need to optimize this...
-        ArrayList<Character> grayLetters = new ArrayList<Character>();
+        ArrayList<Character> redLetters = new ArrayList<Character>();
 		ArrayList<Character> orangeLetters = new ArrayList<Character>();
 
         ArrayList<String> lettersWithColors = new ArrayList<String>();
@@ -69,14 +69,14 @@ public class Word {
                 }
 
                 //Makes a list with letters not in the secret word
-                if(!orangeLetters.contains(userGuess.charAt(i)) && !grayLetters.contains(userGuess.charAt(i))) {
-                    grayLetters.add(userGuess.charAt(i));
+                if(!orangeLetters.contains(userGuess.charAt(i)) && !redLetters.contains(userGuess.charAt(i))) {
+                    redLetters.add(userGuess.charAt(i));
                 }
 
 
                 //Letter + Gray (Not in secret word)
-                if(grayLetters.contains(userGuess.charAt(i))){
-                    lettersWithColors.set(i, userGuess.charAt(i) + "Gray");
+                if(redLetters.contains(userGuess.charAt(i))){
+                    lettersWithColors.set(i, userGuess.charAt(i) + "Red");
                 }
             }
 

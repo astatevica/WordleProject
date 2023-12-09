@@ -46,7 +46,7 @@ public class MainService {
 		//TODO need to remove a couple of things
 
 		ArrayList<String> allGuesses = new ArrayList<String>();
-		ArrayList<Character> grayLetters = new ArrayList<Character>();
+		ArrayList<Character> redLetters = new ArrayList<Character>();
 		ArrayList<Character> orangeLetters = new ArrayList<Character>();
 
 		
@@ -64,14 +64,14 @@ public class MainService {
 
 			if(userGuess.equals(secretWord)) {
 				gameOver = true;
-				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, grayLetters);
+				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, redLetters);
 				System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^");
 				System.out.println("You win!");
 				System.out.println("Word was: " + secretWord);
 				System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^");
 			}else if(lives <= 0){
 				gameOver = true;
-				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, grayLetters);
+				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, redLetters);
 				System.out.println("You lose!");
 				System.out.println("Word was: " + secretWord);
 			}else{
@@ -103,20 +103,20 @@ public class MainService {
 						}
 
 						//Makes a list with letters not in the secret word
-						if(!orangeLetters.contains(userGuess.charAt(i)) && !grayLetters.contains(userGuess.charAt(i))) {
-							grayLetters.add(userGuess.charAt(i));
+						if(!orangeLetters.contains(userGuess.charAt(i)) && !redLetters.contains(userGuess.charAt(i))) {
+							redLetters.add(userGuess.charAt(i));
 						}
 
 
 						//Letter + Gray (Not in secret word)
-						if(grayLetters.contains(userGuess.charAt(i))){
-							lettersWithColors.set(i, userGuess.charAt(i) + "Gray");
+						if(redLetters.contains(userGuess.charAt(i))){
+							lettersWithColors.set(i, userGuess.charAt(i) + "Red");
 						}
 					}
 				}
 				
 	
-				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, grayLetters);
+				showGuesses(inWordWithCorrectPlacementLetters, allGuesses, orangeLetters, redLetters);
 				System.out.println(";;;;;;;;;;;;;;;;;;;;;;");
 				System.out.println("Letters with colors:" + lettersWithColors);
 				System.out.println(";;;;;;;;;;;;;;;;;;;;;;");
@@ -185,7 +185,7 @@ public class MainService {
 	
 	
 	public static void showGuesses(ArrayList<Character> inWordWithCorrectPlacementLetters, ArrayList<String> allGuesses,
-			ArrayList<Character> orangeLetters, ArrayList<Character> grayLetters) {
+			ArrayList<Character> orangeLetters, ArrayList<Character> redLetters) {
 		System.out.println("=================================================");
 		System.out.println("Known letters: " + inWordWithCorrectPlacementLetters);
 		for(int i = 0; i < allGuesses.size(); i++) {
@@ -193,7 +193,7 @@ public class MainService {
 		}	
 		System.out.println("-------------------------------------------------");
 		System.out.println("In word letters with incorrect placement: " + orangeLetters);
-		System.out.println("Used letters that are not in the word: " + grayLetters);
+		System.out.println("Used letters that are not in the word: " + redLetters);
 		System.out.println("=================================================");
 	}
 	
