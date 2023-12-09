@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class MainService {
 
 	//TODO Think of extra level difficulties for wordle
+	//TODO Time ?
 	
 	public static Scanner myScanner = new Scanner(System.in);
 	private static ArrayList<String> fiveLetterWords = new ArrayList<String>();
@@ -42,6 +43,8 @@ public class MainService {
 		
 		int lives = 6;
 	
+		//TODO need to remove a couple of things
+
 		ArrayList<String> allGuesses = new ArrayList<String>();
 		ArrayList<Character> grayLetters = new ArrayList<Character>();
 		ArrayList<Character> orangeLetters = new ArrayList<Character>();
